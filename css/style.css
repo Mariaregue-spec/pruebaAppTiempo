@@ -1,0 +1,89 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app {
+  background: rgba(255, 255, 255, 0.85);
+  color: black;
+  width: 95%;
+  max-width: 420px;
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+  backdrop-filter: blur(8px);
+}
+
+
+input,
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+button {
+    background: #4facfe;
+    border: none;
+    color: white;
+    border-radius: 10px;
+}
+
+#weather {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.day {
+    background: #ffeaa7;
+}
+
+.night {
+    background: #2d3436;
+    color: white;
+}
+
+/* ☀️ Soleado */
+.fondo-soleado {
+    background: linear-gradient(#56ccf2, #2f80ed);
+}
+
+/* ☁️ Nublado */
+.fondo-nublado {
+    background: linear-gradient(#bdc3c7, #2c3e50);
+}
+
+/* 🌧️ Lluvia */
+.fondo-lluvia {
+    background: linear-gradient(#4b79a1, #283e51);
+}
+
+/* 🌙 Noche */
+.fondo-noche {
+    background: linear-gradient(#141e30, #243b55);
+}
+
+body.fondo-soleado {
+    background: linear-gradient(#56ccf2, #2f80ed);
+}
+
+body.fondo-nublado {
+    background: linear-gradient(#bdc3c7, #2c3e50);
+}
+
+body.fondo-lluvia {
+    background: linear-gradient(#4b79a1, #283e51);
+}
+
+body.fondo-noche {
+    background: linear-gradient(#141e30, #243b55);
+}
