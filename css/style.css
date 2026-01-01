@@ -12,14 +12,13 @@ body {
 }
 
 .app {
-  background: rgba(255, 255, 255, 0.85);
-  color: black;
-  width: 95%;
-  max-width: 420px;
-  padding: 20px;
-  border-radius: 20px;
-  text-align: center;
-  backdrop-filter: blur(8px);
+    background: rgba(238, 238, 239, 0.8);
+    width: 95%;
+    max-width: 420px;
+    padding: 25px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -32,7 +31,7 @@ button {
 }
 
 button {
-    background: #4facfe;
+    background: #57758f;
     border: none;
     color: white;
     border-radius: 10px;
@@ -43,14 +42,6 @@ button {
     font-size: 14px;
 }
 
-.day {
-    background: #ffeaa7;
-}
-
-.night {
-    background: #2d3436;
-    color: white;
-}
 
 /* ☀️ Soleado */
 .fondo-soleado {
@@ -86,4 +77,55 @@ body.fondo-lluvia {
 
 body.fondo-noche {
     background: linear-gradient(#141e30, #243b55);
+}
+
+/* --- Día actual (grande) --- */
+.icono-hoy svg {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+
+/* --- Contenedor 7 días --- */
+.pronostico {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 8px;
+    font-size: 12px;
+}
+
+/* --- Cada día --- */
+.dia {
+    background: rgba(131, 163, 231, 0.7);
+    padding: 8px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.dia svg {
+    width: 28px;
+    height: 28px;
+    margin: 4px 0;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 22px;
+}
+
+#fecha {
+    font-size: 14px;
+    opacity: 0.7;
+    margin-bottom: 15px;
+}
+
+#videoFondo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
 }
