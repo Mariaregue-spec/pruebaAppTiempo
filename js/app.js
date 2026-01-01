@@ -42,8 +42,8 @@ function obtenerClima(lat, lon, ciudad, pais) {
     const url = `
 https://api.open-meteo.com/v1/forecast?
 latitude=${lat}&longitude=${lon}
-&current=temperature_2m,is_day,cloud_cover,precipitation,wind_speed_10m,relative_humidity_2m
-&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,uv_index_max,daylight_duration
+&current=temperature_2m,apparent_temperature,is_day,cloud_cover,precipitation,wind_speed_10m,relative_humidity_2m
+&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset
 &timezone=auto`;
 
     fetch(url.replace(/\s+/g, ""))
@@ -64,18 +64,62 @@ function mostrarClima(data, ciudad, pais) {
     let html = `
     <h2>📍 ${ciudad}, ${pais}</h2>
 
-    <div class="hoy">
-    <div class="icono-hoy">${iconoHoy}
-        <p>🌡️ Ahora: <strong>${c.temperature_2m} °C</strong></p>
-        <p>⬆️ Máx: ${d.temperature_2m_max[0]} °C</p>
-        <p>⬇️ Mín: ${d.temperature_2m_min[0]} °C</p>
-        <p>💨 Viento: ${c.wind_speed_10m} km/h</p>
-        <p>💧 Humedad: ${c.relative_humidity_2m} %</p>
-        </div>
+   <div class="hoy">
+  <div class="icono-hoy">${iconoHoy}</div>
+
+  <div class="datos-grid">
+    <div class="dato">
+      <span>🌡️</span>
+      <strong>${c.temperature_2m} °C</strong>
+      <small>Ahora</small>
+    </div>
+
+    <div class="dato">
+      <span>🥵</span>
+      <strong>${c.apparent_temperature} °C</strong>
+      <small>Sensación</small>
+    </div>
+
+    <div class="dato">
+      <span>💨</span>
+      <strong>${c.wind_speed_10m} km/h</strong>
+      <small>Viento</small>
+    </div>
+
+    <div class="dato">
+      <span>💧</span>
+      <strong>${c.relative_humidity_2m} %</strong>
+      <small>Humedad</small>
+    </div>
+
+    <div class="dato">
+      <span>⬆️</span>
+      <strong>${d.temperature_2m_max[0]} °C</strong>
+      <small>Máxima</small>
+    </div>
+
+    <div class="dato">
+      <span>⬇️</span>
+      <strong>${d.temperature_2m_min[0]} °C</strong>
+      <small>Mínima</small>
+    </div>
+
+    <div class="dato">
+      <span>🌅</span>
+      <strong>${new Date(d.sunrise[0]).toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" })}</strong>
+      <small>Amanecer</small>
+    </div>
+
+    <div class="dato">
+      <span>🌇</span>
+      <strong>${new Date(d.sunset[0]).toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" })}</strong>
+      <small>Atardecer</small>
+    </div>
+  </div>
+</div>
 
     <h3>📅 Próximos 7 días</h3>
-    <div class="pronostico">
-  `;
+    <div class="pronostico">`;
 
     // Bucle 7 días
     for (let i = 0; i < 7; i++) {

@@ -129,3 +129,34 @@ body.fondo-noche {
     object-fit: cover;
     z-index: -1;
 }
+
+.datos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.dato {
+    background: rgba(131, 163, 231, 0.7);
+    border-radius: 14px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dato span {
+    font-size: 20px;
+    display: block;
+}
+
+.dato strong {
+    display: block;
+    font-size: 14px;
+    margin: 4px 0;
+}
+
+.dato small {
+    font-size: 11px;
+    opacity: 0.7;
+}
