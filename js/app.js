@@ -62,7 +62,8 @@ function mostrarClima(data, ciudad, pais) {
 
     // HTML inicial
     let html = `
-    <h2>📍 ${ciudad}, ${pais}</h2>
+<h2>📍 ${ciudad}, ${pais}</h2>
+<button class="fav-btn" onclick="guardarFavorita('${ciudad}')">⭐ Guardar favorita</button>
 
    <div class="hoy">
   <div class="icono-hoy">${iconoHoy}</div>
@@ -164,9 +165,11 @@ function cambiarFondo(c) {
 
 // Ciudad por defecto
 window.addEventListener("load", () => {
-    mostrarFecha();
-    buscarCiudad("Betanzos");
+  mostrarFecha();
+  mostrarFavoritas();
+  buscarCiudad("Betanzos");
 });
+
 function obtenerIcono(c) {
     if (!c.is_day) return "🌙";
     if (c.precipitation > 0) return "🌧️";
@@ -215,4 +218,37 @@ function obtenerIconoSVG(c, size = 48) {
 
     return svg.replace(/width="48"/, `width="${size}"`)
         .replace(/height="48"/, `height="${size}"`);
+}
+function guardarFavorita(ciudad) {
+  let favoritas = JSON.parse(localStorage.getItem("favoritas")) || [];
+
+  if (!favoritas.includes(ciudad)) {
+    favoritas.push(ciudad);
+    localStorage.setItem("favoritas", JSON.stringify(favoritas));
+    mostrarFavoritas();
+  }
+}
+
+function eliminarFavorita(ciudad) {
+  let favoritas = JSON.parse(localStorage.getItem("favoritas")) || [];
+  favoritas = favoritas.filter(c => c !== ciudad);
+  localStorage.setItem("favoritas", JSON.stringify(favoritas));
+  mostrarFavoritas();
+}
+
+function mostrarFavoritas() {
+  const contenedor = document.getElementById("favoritas");
+  if (!contenedor) return;
+
+  let favoritas = JSON.parse(localStorage.getItem("favoritas")) || [];
+  contenedor.innerHTML = "";
+
+  favoritas.forEach(ciudad => {
+    contenedor.innerHTML += `
+      <div class="fav-item">
+        <span onclick="buscarCiudad('${ciudad}')">${ciudad}</span>
+        <button onclick="eliminarFavorita('${ciudad}')">❌</button>
+      </div>
+    `;
+  });
 }

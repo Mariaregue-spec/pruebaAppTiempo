@@ -160,3 +160,39 @@ body.fondo-noche {
     font-size: 11px;
     opacity: 0.7;
 }
+.fav-btn {
+  background: #f5b301;
+  border: none;
+  border-radius: 12px;
+  padding: 8px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.favoritas {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.fav-item {
+  background: rgba(255,255,255,0.85);
+  border-radius: 10px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.fav-item span {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.fav-item button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
