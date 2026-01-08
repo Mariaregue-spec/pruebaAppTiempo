@@ -6,17 +6,21 @@
 body {
     margin: 0;
     min-height: 100vh;
+    overflow-y: auto;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content:center;
+    align-items: flex-start;
+
 }
 
 .app {
-    background: rgba(238, 238, 239, 0.8);
-    width: 95%;
-    max-width: 420px;
+    background: rgba(238, 238, 239, 0.2);
+    width: 80%;
+    max: width 90vh;
+    overflow: auto;
     padding: 25px;
     border-radius: 25px;
+    margin: 4vh auto;
     text-align: center;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
@@ -42,42 +46,6 @@ button {
     font-size: 14px;
 }
 
-
-/* ☀️ Soleado */
-.fondo-soleado {
-    background: linear-gradient(#56ccf2, #2f80ed);
-}
-
-/* ☁️ Nublado */
-.fondo-nublado {
-    background: linear-gradient(#bdc3c7, #2c3e50);
-}
-
-/* 🌧️ Lluvia */
-.fondo-lluvia {
-    background: linear-gradient(#4b79a1, #283e51);
-}
-
-/* 🌙 Noche */
-.fondo-noche {
-    background: linear-gradient(#141e30, #243b55);
-}
-
-body.fondo-soleado {
-    background: linear-gradient(#56ccf2, #2f80ed);
-}
-
-body.fondo-nublado {
-    background: linear-gradient(#bdc3c7, #2c3e50);
-}
-
-body.fondo-lluvia {
-    background: linear-gradient(#4b79a1, #283e51);
-}
-
-body.fondo-noche {
-    background: linear-gradient(#141e30, #243b55);
-}
 
 /* --- Día actual (grande) --- */
 .icono-hoy svg {
@@ -128,6 +96,11 @@ body.fondo-noche {
     height: 100%;
     object-fit: cover;
     z-index: -1;
+
+    #videoFondo {
+        pointer-events: none;
+    }
+
 }
 
 .datos-grid {
@@ -160,39 +133,40 @@ body.fondo-noche {
     font-size: 11px;
     opacity: 0.7;
 }
+
 .fav-btn {
-  background: #f5b301;
-  border: none;
-  border-radius: 12px;
-  padding: 8px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  font-weight: bold;
+    background: #f5b301;
+    border: none;
+    border-radius: 12px;
+    padding: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 .favoritas {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  margin-bottom: 10px;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
 }
 
 .fav-item {
-  background: rgba(255,255,255,0.85);
-  border-radius: 10px;
-  padding: 6px 10px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+    background: rgba(131, 163, 231, 0.7);
+    border-radius: 10px;
+    padding: 6px 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .fav-item span {
-  cursor: pointer;
-  font-weight: bold;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 .fav-item button {
-  background: none;
-  border: none;
-  cursor: pointer;
+    background: none;
+    border: none;
+    cursor: pointer;
 }

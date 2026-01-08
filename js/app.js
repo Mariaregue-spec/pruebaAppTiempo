@@ -144,30 +144,50 @@ function mostrarClima(data, ciudad, pais) {
 
 function cambiarFondo(c) {
 
-    if (!c.is_day) {
-        video.src = "../video/night.mp4";
-        return;
-    }
+  // ⛈️ Tormenta (máxima prioridad)
+  if (c.precipitation > 10) {
+    video.src = c.is_day
+      ? "../video/stormDay.mp4"
+      : "../video/stormyNight.mp4";
+    return;
+  }
 
-    if (c.precipitation > 0) {
-        video.src = "../video/rain.mp4";
-        return;
-    }
+  // ❄️ Nieve
+  if (c.snowfall > 0) {
+    video.src = c.is_day
+      ? "../video/snowingDay.mp4"
+      : "../video/snowingNight.mp4";
+    return;
+  }
 
-    if (c.cloud_cover > 60) {
-        video.src = "../video/cloudy.mp4";
-        return;
-    }
+  // 🌧️ Lluvia
+  if (c.precipitation > 0) {
+    video.src = c.is_day
+      ? "../video/rainDay.mp4"
+      : "../video/rainNight.mp4";
+    return;
+  }
 
-    video.src = "../video/sunny.mp4";
+  // ☁️ Nublado
+  if (c.cloud_cover > 60) {
+    video.src = c.is_day
+      ? "../video/cloudyDay.mp4"
+      : "../video/cloudyNight.mp4";
+    return;
+  }
+
+  // ☀️ / 🌙 Despejado
+  video.src = c.is_day
+    ? "../video/sunny.mp4"
+    : "../video/night.mp4";
 }
 
 
 // Ciudad por defecto
 window.addEventListener("load", () => {
-  mostrarFecha();
-  mostrarFavoritas();
-  buscarCiudad("Betanzos");
+    mostrarFecha();
+    mostrarFavoritas();
+    buscarCiudad("Betanzos");
 });
 
 function obtenerIcono(c) {
@@ -220,35 +240,35 @@ function obtenerIconoSVG(c, size = 48) {
         .replace(/height="48"/, `height="${size}"`);
 }
 function guardarFavorita(ciudad) {
-  let favoritas = JSON.parse(localStorage.getItem("favoritas")) || [];
+    let favoritas = JSON.parse(localStorage.getItem("favoritas")) || [];
 
-  if (!favoritas.includes(ciudad)) {
-    favoritas.push(ciudad);
-    localStorage.setItem("favoritas", JSON.stringify(favoritas));
-    mostrarFavoritas();
-  }
+    if (!favoritas.includes(ciudad)) {
+        favoritas.push(ciudad);
+        localStorage.setItem("favoritas", JSON.stringify(favoritas));
+        mostrarFavoritas();
+    }
 }
 
 function eliminarFavorita(ciudad) {
-  let favoritas = JSON.parse(localStorage.getItem("favoritas")) || [];
-  favoritas = favoritas.filter(c => c !== ciudad);
-  localStorage.setItem("favoritas", JSON.stringify(favoritas));
-  mostrarFavoritas();
+    let favoritas = JSON.parse(localStorage.getItem("favoritas")) || [];
+    favoritas = favoritas.filter(c => c !== ciudad);
+    localStorage.setItem("favoritas", JSON.stringify(favoritas));
+    mostrarFavoritas();
 }
 
 function mostrarFavoritas() {
-  const contenedor = document.getElementById("favoritas");
-  if (!contenedor) return;
+    const contenedor = document.getElementById("favoritas");
+    if (!contenedor) return;
 
-  let favoritas = JSON.parse(localStorage.getItem("favoritas")) || [];
-  contenedor.innerHTML = "";
+    let favoritas = JSON.parse(localStorage.getItem("favoritas")) || [];
+    contenedor.innerHTML = "";
 
-  favoritas.forEach(ciudad => {
-    contenedor.innerHTML += `
+    favoritas.forEach(ciudad => {
+        contenedor.innerHTML += `
       <div class="fav-item">
         <span onclick="buscarCiudad('${ciudad}')">${ciudad}</span>
         <button onclick="eliminarFavorita('${ciudad}')">❌</button>
       </div>
     `;
-  });
+    });
 }
