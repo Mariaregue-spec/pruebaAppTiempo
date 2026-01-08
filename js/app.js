@@ -78,8 +78,8 @@ function mostrarClima(data, ciudad, pais) {
     <div class="dato"><span>💧</span><strong>${c.relative_humidity_2m} %</strong><small>Humedad</small></div>
     <div class="dato"><span>⬆️</span><strong>${d.temperature_2m_max[0]} °C</strong><small>Máxima</small></div>
     <div class="dato"><span>⬇️</span><strong>${d.temperature_2m_min[0]} °C</strong><small>Mínima</small></div>
-    <div class="dato"><span>🌅</span><strong>${new Date(d.sunrise[0]).toLocaleTimeString("es-ES",{hour:"2-digit",minute:"2-digit"})}</strong><small>Amanecer</small></div>
-    <div class="dato"><span>🌇</span><strong>${new Date(d.sunset[0]).toLocaleTimeString("es-ES",{hour:"2-digit",minute:"2-digit"})}</strong><small>Atardecer</small></div>
+    <div class="dato"><span>🌅</span><strong>${new Date(d.sunrise[0]).toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" })}</strong><small>Amanecer</small></div>
+    <div class="dato"><span>🌇</span><strong>${new Date(d.sunset[0]).toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" })}</strong><small>Atardecer</small></div>
   </div>
 </div>
 `;
@@ -90,11 +90,11 @@ function mostrarClima(data, ciudad, pais) {
   for (let i = 0; i < h.time.length; i++) {
     const fechaHora = new Date(h.time[i]);
     if (fechaHora.getDate() !== hoyDia) continue;
-    const climaHora = { is_day:h.is_day[i], precipitation:h.precipitation[i], cloud_cover:h.cloud_cover[i] };
+    const climaHora = { is_day: h.is_day[i], precipitation: h.precipitation[i], cloud_cover: h.cloud_cover[i] };
     html += `
       <div class="hora-item">
         <strong>${fechaHora.getHours()}:00</strong>
-        ${obtenerIconoSVG(climaHora,28)}
+        ${obtenerIconoSVG(climaHora, 28)}
         <span>${h.temperature_2m[i]}°</span>
       </div>`;
   }
@@ -102,13 +102,13 @@ function mostrarClima(data, ciudad, pais) {
 
   // --- Pronóstico 7 días ---
   html += `<h3>📅 Próximos 7 días</h3><div class="pronostico">`;
-  for (let i=0;i<7;i++){
+  for (let i = 0; i < 7; i++) {
     const fecha = new Date(d.time[i]);
-    const dia = fecha.toLocaleDateString("es-ES",{weekday:"short"});
+    const dia = fecha.toLocaleDateString("es-ES", { weekday: "short" });
     html += `
       <div class="dia-card">
         <strong>${dia}</strong>
-        ${obtenerIconoSVG({is_day:true,precipitation:0,cloud_cover:0},28)}
+        ${obtenerIconoSVG({ is_day: true, precipitation: 0, cloud_cover: 0 }, 28)}
         <span>${d.temperature_2m_max[i]}° / ${d.temperature_2m_min[i]}°</span>
       </div>`;
   }
@@ -202,7 +202,7 @@ function mostrarAlertas(data) {
       datasets: [{
         label: 'Nivel de alerta',
         data: Object.values(alertas),
-        backgroundColor: ['#1e90ff','#f39c12','#95a5a6']
+        backgroundColor: ['#1e90ff', '#f39c12', '#95a5a6']
       }]
     },
     options: {
