@@ -8,15 +8,14 @@ body {
     min-height: 100vh;
     overflow-y: auto;
     display: flex;
-    justify-content:center;
+    justify-content: center;
     align-items: flex-start;
-
 }
 
 .app {
     background: rgba(238, 238, 239, 0.2);
     width: 80%;
-    max: width 90vh;
+    max-width: 600px;
     overflow: auto;
     padding: 25px;
     border-radius: 25px;
@@ -24,7 +23,6 @@ body {
     text-align: center;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
-
 
 input,
 button {
@@ -39,6 +37,7 @@ button {
     border: none;
     color: white;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 #weather {
@@ -46,16 +45,12 @@ button {
     font-size: 14px;
 }
 
-
-/* --- Día actual (grande) --- */
 .icono-hoy svg {
     width: 80px;
     height: 80px;
     margin-bottom: 10px;
 }
 
-
-/* --- Contenedor 7 días --- */
 .pronostico {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
@@ -63,7 +58,6 @@ button {
     font-size: 12px;
 }
 
-/* --- Cada día --- */
 .dia {
     background: rgba(131, 163, 231, 0.7);
     padding: 8px;
@@ -96,11 +90,7 @@ button {
     height: 100%;
     object-fit: cover;
     z-index: -1;
-
-    #videoFondo {
-        pointer-events: none;
-    }
-
+    pointer-events: none;
 }
 
 .datos-grid {
@@ -169,4 +159,59 @@ button {
     background: none;
     border: none;
     cursor: pointer;
+}
+
+.carousel-horas {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding: 10px 0;
+}
+
+.hora-item {
+    min-width: 70px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 14px;
+    padding: 8px;
+    text-align: center;
+    font-size: 13px;
+    flex-shrink: 0;
+}
+
+.hora-item strong {
+    display: block;
+    margin-bottom: 4px;
+}
+.card-dia {
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.hora-item {
+  min-width:70px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 14px;
+  padding: 10px;
+  text-align:center;
+  flex-shrink:0;
+  box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+.dia-card {
+  background: rgba(255,255,255,0.7);
+  padding: 12px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.carousel-horas {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 10px 0;
 }
