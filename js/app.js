@@ -127,15 +127,14 @@ function mostrarClima(data, ciudad, pais) {
   mostrarAlertas(data);
 }
 
-// --- Fondo dinámico ---
-function cambiarFondo(c) {
-  if (c.precipitation > 10) { video.src = c.is_day ? "./video/stormDay.mp4" : "./video/stormyNight.mp4"; return; }
-  if (c.snowfall > 0) { video.src = c.is_day ? "./video/snowingDay.mp4" : "./video/snowingNight.mp4"; return; }
-  if (c.precipitation > 0) { video.src = c.is_day ? "./video/rainDay.mp4" : "./video/rainNight.mp4"; return; }
-  if (c.cloud_cover > 60) { video.src = c.is_day ? "./video/cloudyDay.mp4" : "./video/cloudyNight.mp4"; return; }
-  video.src = c.is_day ? "./video/sunny.mp4" : "./video/night.mp4";
+// --- Fondo dinámico --- 
+function cambiarFondo(c) { 
+if (c.precipitation > 10) { video.src = c.is_day ? "../video/stormDay.mp4" : "../video/stormyNight.mp4"; return; } 
+if (c.snowfall > 0) { video.src = c.is_day ? "../video/snowingDay.mp4" : "../video/snowingNight.mp4"; return; } 
+if (c.precipitation > 0) { video.src = c.is_day ? "../video/rainDay.mp4" : "../video/rainNight.mp4"; return; } 
+if (c.cloud_cover > 60) { video.src = c.is_day ? "../video/cloudyDay.mp4" : "video/cloudyNight.mp4"; return; } 
+video.src = c.is_day ? "../video/sunny.mp4" : "../video/night.mp4"; 
 }
-
 // --- Iconos SVG ---
 const ICONOS = {
   sol: `<svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="orange" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="23"/><line x1="1" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="23" y2="12"/><line x1="4.2" y1="4.2" x2="6.3" y2="6.3"/><line x1="17.7" y1="17.7" x2="19.8" y2="19.8"/><line x1="4.2" y1="19.8" x2="6.3" y2="17.7"/><line x1="17.7" y1="6.3" x2="19.8" y2="4.2"/></svg>`,
