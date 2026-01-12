@@ -47,7 +47,8 @@ https://api.open-meteo.com/v1/forecast?
 latitude=${lat}&longitude=${lon}
 &current=temperature_2m,apparent_temperature,is_day,cloud_cover,precipitation,snowfall,wind_speed_10m,relative_humidity_2m
 &hourly=temperature_2m,precipitation,cloud_cover,is_day
-&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset
+&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,weathercode
+
 &timezone=auto`;
 
   fetch(url.replace(/\s+/g, ""))
@@ -83,6 +84,18 @@ function mostrarClima(data, ciudad, pais) {
   </div>
 </div>
 `;
+function iconoPorWeatherCode(code, size = 28) {
+  let svg;
+
+  if (code === 0) svg = ICONOS.sol;                // despejado
+  else if ([1,2,3].includes(code)) svg = ICONOS.nube; // nubes
+  else if ([51,53,55,61,63,65].includes(code)) svg = ICONOS.lluvia; // lluvia
+  else svg = ICONOS.nube;
+
+  return svg
+    .replace(/width="48"/, `width="${size}"`)
+    .replace(/height="48"/, `height="${size}"`);
+}
 
   // --- Carrusel de horas ---
   const hoyDia = new Date().getDate();
@@ -108,7 +121,7 @@ function mostrarClima(data, ciudad, pais) {
     html += `
       <div class="dia-card">
         <strong>${dia}</strong>
-        ${obtenerIconoSVG({ is_day: true, precipitation: 0, cloud_cover: 0 }, 28)}
+        ${iconoPorWeatherCode(d.weathercode[i], 28)}
         <span>${d.temperature_2m_max[i]}° / ${d.temperature_2m_min[i]}°</span>
       </div>`;
   }
