@@ -51,10 +51,15 @@ El objetivo principal del proyecto es practicar:
 ---
 
 ## 🖼️ Capturas de pantalla
+<img width="286" height="422" alt="Captura de pantalla 2026-01-15 130712" src="https://github.com/user-attachments/assets/6dc1d0a5-1814-4ac8-8420-77e42311c992" /> <img width="286" height="422" alt="Captura de pantalla 2026-01-15 125836" src="https://github.com/user-attachments/assets/9ea91380-82b7-4eeb-acdc-03f88dee59fb" />
+
+<img width="286" height="422" alt="Captura de pantalla 2026-01-15 125921" src="https://github.com/user-attachments/assets/fe465ea9-6eb1-4719-848b-2ee99f124437" /> <img width="286" height="422" alt="Captura de pantalla 2026-01-15 125942" src="https://github.com/user-attachments/assets/3b03ad09-ca01-462d-9816-f4ff3d5c27b2" />
+
 
 ---
 
 ## 🔮 Próximas mejoras
+![Uploading Captura de pantalla 2026-01-15 125836.png…]()
 
 - 📍 Geolocalización automática  
 - ⏳ Pronóstico por horas y días  
